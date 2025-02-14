@@ -11,31 +11,32 @@
 <table>
     <tbody>
         <tr>
-            @for (int i = 0; i < 3; i++)
+            @for (var i = 0; i < 3; i++)
             {
-                var localIndex = i;
                 @if (isLoading || !isLoaded)
                 {
-                    <td style="@GetDimensionsFormat(localIndex)"></td>
+                    <td style="@GetDimensionsFormat(i)"></td>
                 }
                 else
                 {
-                    <td style="@backgroundStyles[localIndex]"></td>
+                    <td style="@backgroundStyles[i]"></td>
                 }
             }
         </tr>
         <tr>
-            @for (int i = 0; i < 3; i++)
+            @for (var i = 0; i < 3; i++)
             {
                 var localIndex = i;
                 <td>
-                    <label for="@($"lockCheckBox{localIndex}")">
-                        Lock
-                    </label>
                     <input type="checkbox"
+                           class="form-check-input"
                            id="@($"lockCheckBox{localIndex}")"
                            @bind="@lockedImages[localIndex]"
                            disabled="@isLoading">
+                    <label for="@($"lockCheckBox{localIndex}")"
+                           class="form-check-label">
+                        Lock
+                    </label>
                 </td>
             }
         </tr>
@@ -45,6 +46,7 @@
 <br />
 
 <button @onclick="@GetRandomComic"
+        class="btn btn-primary"
         disabled="@ButtonIsDisabled">
     Get Random Comic
 </button>

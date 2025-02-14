@@ -10,7 +10,7 @@ public partial class Home
 
     private readonly bool[] lockedImages = new bool[3];
 
-    private const int imageHeight = 242;
+    private const int ImageHeight = 242;
 
     private bool isLoading;
 
@@ -19,8 +19,8 @@ public partial class Home
     private bool ButtonIsDisabled => lockedImages.All(li => li);
 
     private string GetDimensionsFormat(int index) => index is < 0 or > 2
-            ? throw new ArgumentOutOfRangeException(nameof(index), "Index must be between 0 and 2.")
-            : $"height: {imageHeight}px; width: {imageWidths[index]}px; border: 1px solid black;";
+        ? throw new ArgumentOutOfRangeException(nameof(index), "Index must be between 0 and 2.")
+        : $"height: {ImageHeight}px; width: {imageWidths[index]}px; border: 1px solid black;";
 
     private void GetRandomComic()
     {
@@ -31,8 +31,10 @@ public partial class Home
             {
                 continue;
             }
+
             backgroundStyles[i] = $"background: {ImageLoader.GetBackgroundStyle(i)}; {GetDimensionsFormat(i)}";
         }
+
         isLoading = false;
         isLoaded = true;
     }
