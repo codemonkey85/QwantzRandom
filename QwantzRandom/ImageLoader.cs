@@ -1,9 +1,11 @@
 ﻿namespace QwantzRandom;
 
-public class ImageLoader
+public static class ImageLoader
 {
     private const int minMonth = 3;
     private const int maxMonth = 693;
+
+    private const string baseUrl = "http://www.qwantz.com/comics/rand/";
 
     public static string GetBackgroundStyle(int index)
     {
@@ -14,9 +16,14 @@ public class ImageLoader
 
         Random random = new();
         var month = random.Next(minMonth, maxMonth);
-        var imgUrl = $"http://www.qwantz.com/comics/rand/{month}.png";
+        var imgUrl = $"{baseUrl}{month}.png";
 
-        var offsetX = index == 1 ? -243 : index == 2 ? -492 : 0;
+        var offsetX = index switch
+        {
+            1 => -243,
+            2 => -492,
+            _ => 0
+        };
         var offsetY = index == 2 ? -243 : 0;
 
         return $"url({imgUrl}) {offsetX}px {offsetY}px";
