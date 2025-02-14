@@ -1,0 +1,35 @@
+﻿@page "/"
+
+<PageTitle>
+    @AppTitle
+</PageTitle>
+
+<h1>
+    @AppTitle
+</h1>
+
+<center>
+
+    <table border="1">
+        <tbody>
+            <tr>
+                <td width="243" height="@imageHeight" style="@backgroundStyles[0]"></td>
+                <td width="130" height="@imageHeight" style="@backgroundStyles[1]"></td>
+                <td width="241" height="@imageHeight" style="@backgroundStyles[2]"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" @bind="@lockedImages[0]">Lock</td>
+                <td><input type="checkbox" @bind="@lockedImages[1]">Lock</td>
+                <td><input type="checkbox" @bind="@lockedImages[2]">Lock</td>
+            </tr>
+        </tbody>
+    </table>
+
+</center>
+
+<br />
+
+<button @onclick="@GetRandomComic"
+        disabled="@ButtonIsDisabled">
+    Get Random Comic
+</button>
